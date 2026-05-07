@@ -77,7 +77,7 @@ morses = [
 MRZ = { normal_mode = true, unilateral_tap = false, hold_timeout = "200ms", gap_timeout = "200ms" }
 
 [rmk]
-morse_max_num = 36
+morse_max_num = 10
 max_patterns_per_key = 36
 
 [storage]
