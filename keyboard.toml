@@ -1,35 +1,84 @@
-# Documentation: https://rmk.rs/docs/configuration.html
 [keyboard]
-name = "RMK Keyboard"
-product_name = "RMK Keyboard"
-vendor_id = 0x4c4b
-product_id = 0x4643
-manufacturer = "RMK"
+name = "OneKey"
+product_name = "OneKey"
+vendor_id = 0x5959
+product_id = 0x3037
+manufacturer = "YinYang"
 chip = "rp2040"
 
-[matrix]
-# Row and col pins are mandatory
-row_pins = ["PIN_6", "PIN_7", "PIN_8", "PIN_9"]
-col_pins = ["PIN_19", "PIN_20", "PIN_21"]
+[host]
+vial_enabled = false
 
-# RMK uses col2row as the default matrix diode direction, if you want to use a row2col matrix, add `row2col = true`
-# row2col = true
+[matrix]
+matrix_type = "direct_pin"
+direct_pins = [
+    ["PIN_6"]
+]
+
+direct_pin_low_active = true
 
 [layout]
-rows = 4
-cols = 3
-layers = 2
-keymap = [
-    [
-        ["A", "B", "C"],
-        ["Kc1", "Kc2", "Kc3"],
-        ["LCtrl", "MO(1)", "LShift"],
-        ["OSL(1)", "LT(2, Kc9)", "LM(1, LShift | LGui)"]
-    ],
-    [
-        ["_", "TT(1)", "TG(2)"],
-        ["_", "_", "_"],
-        ["_", "_", "_"],
-        ["_", "_", "_"]
-    ],
+rows = 1
+cols = 1
+layers = 1
+matrix_map = """
+             (0,0)
+             """
+
+[[layer]]
+name = "morse_code"
+keys = """
+       TD(0)
+       """
+
+[behavior.morse]
+morses = [
+{ morse_actions = [
+      {pattern = ".-", action = "A"},
+      {pattern = "-...", action = "B"},
+      {pattern = "-.-.", action = "C"},
+      {pattern = "-..", action = "D"},
+      {pattern = ".", action = "E"},
+      {pattern = "..-.", action = "F"},
+      {pattern = "--.", action = "G"},
+      {pattern = "....", action = "H"},
+      {pattern = "..", action = "I"},
+      {pattern = ".---", action = "J"},
+      {pattern = "-.-", action = "K"},
+      {pattern = ".-..", action = "L"},
+      {pattern = "--", action = "M"},
+      {pattern = "-.", action = "N"},
+      {pattern = "---", action = "O"},
+      {pattern = ".--.", action = "P"},
+      {pattern = "--.-", action = "Q"},
+      {pattern = ".-.", action = "R"},
+      {pattern = "...", action = "S"},
+      {pattern = "-", action = "T"},
+      {pattern = "..-", action = "U"},
+      {pattern = "...-", action = "V"},
+      {pattern = ".--", action = "W"},
+      {pattern = "-..-", action = "X"},
+      {pattern = "-.--", action = "Y"},
+      {pattern = "--..", action = "Z"},
+      {pattern = ".----", action = "Kc1"},
+      {pattern = "..---", action = "Kc2"},
+      {pattern = "...--", action = "Kc3"},
+      {pattern = "....-", action = "Kc4"},
+      {pattern = ".....", action = "Kc5"},
+      {pattern = "-....", action = "Kc6"},
+      {pattern = "--...", action = "Kc7"},
+      {pattern = "---..", action = "Kc8"},
+      {pattern = "----.", action = "Kc9"},
+      {pattern = "-----", action = "Kc0"}
+    ], profile = "MRZ" }
 ]
+
+[behavior.morse.profiles]
+MRZ = { normal_mode = true, unilateral_tap = false, hold_timeout = "200ms", gap_timeout = "200ms" }
+
+[rmk]
+morse_max_num = 36
+max_patterns_per_key = 36
+
+[storage]
+enabled = false
