@@ -72,8 +72,9 @@ morses = [
       {pattern = "-----", action = "Kc0"},
       {pattern = ".-.-.-", action = "Dot"},
       {pattern = "--..--", action = "Comma"},
-      {pattern = ".......", action = "Space"},
-      {pattern = "-..-.", action = "Slash"}
+      {pattern = "..--..", action = "SHIFTED(Slash)"},
+      {pattern = "-..-.", action = "Slash"},
+      {pattern = ".......", action = "Space"}
     ], profile = "MRZ" }
 ]
 
@@ -81,7 +82,7 @@ morses = [
 MRZ = { normal_mode = true, unilateral_tap = false, hold_timeout = "200ms", gap_timeout = "200ms" }
 
 [rmk]
-max_patterns_per_key = 40
+max_patterns_per_key = 41
 
 [storage]
 enabled = false
