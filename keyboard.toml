@@ -12,23 +12,23 @@ vial_enabled = false
 [matrix]
 matrix_type = "direct_pin"
 direct_pins = [
-    ["PIN_6"]
+    ["PIN_23", "PIN_6", "PIN_18"]
 ]
 
 direct_pin_low_active = true
 
 [layout]
 rows = 1
-cols = 1
+cols = 3
 layers = 1
 matrix_map = """
-             (0,0)
+             (0,0) (0,1) (0,2)
              """
 
 [[layer]]
 name = "morse_code"
 keys = """
-       TD(0)
+       Backspace TD(0) Enter
        """
 
 [behavior.morse]
