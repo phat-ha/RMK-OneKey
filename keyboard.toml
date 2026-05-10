@@ -12,7 +12,7 @@ vial_enabled = false
 [matrix]
 matrix_type = "direct_pin"
 direct_pins = [
-    ["PIN_23", "PIN_6", "PIN_18"]
+    ["PIN_18", "PIN_6", "PIN_23"]
 ]
 
 direct_pin_low_active = true
@@ -30,6 +30,12 @@ name = "morse_code"
 keys = """
        Backspace TD(0) Enter
        """
+
+[behavior.combo]
+timeout = "150ms"
+combos = [
+  { actions = ["Backspace", "Enter"], output = "Space" },
+]
 
 [behavior.morse]
 morses = [
